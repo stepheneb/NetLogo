@@ -1212,7 +1212,8 @@ public strictfp class World
 
   public String checkTurtleShapeName(String name) {
     name = name.toLowerCase();
-    if (_turtleShapeList.exists(name)) {
+    if(name.startsWith("!") && new java.io.File(name.substring(1)).exists()) return name;
+    else if (_turtleShapeList.exists(name)) {
       return name;
     } else {
       return null; // indicates failure
